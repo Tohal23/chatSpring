@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Simple chat</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+		<link href="css/style.css" rel="stylesheet">
+		<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.1.4/sockjs.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+		<script src="js/script.js"></script>
+	</head>
+	<body>
+		<h1>Simple chat</h1>
+		<div class="chat_window">
+			<div class="top_menu">
+				<div class="buttons">
+					<div class="button close"></div>
+					<div class="button minimize"></div>
+					<div class="button maximize"></div>
+				</div>
+				<div class="title">Chat</div>
+			</div>
+			<ul class="messages"></ul>
+			<div class="bottom_wrapper clearfix">
+				<div class="message_input_wrapper">
+					<input id="message_input_value" class="message_input" placeholder="Type your message here..." />
+				</div>
+				<button onclick="sendMessage()" class="text icon send_message">Send</button>
+
+				<div id="username_form" class="message_input_wrapper">
+					<input id="username" class="message_input" placeholder="Type your name" />
+				</div>
+				<button id="connect" onclick="connect()">Connect to chat</button>
+
+				<button onclick="disconnect()">Disconnect from chat</button>
+			</div>
+		</div>
+		<div id="message_template" class="message_template">
+			<li class="message">
+
+				<div class="text_wrapper">
+					<div class="author"></div>
+					<div class="text"></div>
+				</div>
+			</li>
+		</div>
+	</body>
+</html>
