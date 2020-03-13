@@ -1,49 +1,53 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<title>Simple chat</title>
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-		<link href="css/style.css" rel="stylesheet">
-		<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.1.4/sockjs.min.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
-		<script src="js/script.js"></script>
-	</head>
-	<body>
-		<h1>Simple chat</h1>
-		<div class="chat_window">
-			<div class="top_menu">
-				<div class="buttons">
-					<div class="button close"></div>
-					<div class="button minimize"></div>
-					<div class="button maximize"></div>
-				</div>
-				<div class="title">Chat</div>
-			</div>
-			<ul class="messages"></ul>
-			<div class="bottom_wrapper clearfix">
-				<div class="message_input_wrapper">
-					<input id="message_input_value" class="message_input" placeholder="Type your message here..." />
-				</div>
-				<button onclick="sendMessage()" class="text icon send_message">Send</button>
-
-				<div id="username_form" class="message_input_wrapper">
-					<input id="username" class="message_input" placeholder="Type your name" />
-				</div>
-				<button id="connect" onclick="connect()">Connect to chat</button>
-
-				<button onclick="disconnect()">Disconnect from chat</button>
-			</div>
+<head>
+	<meta charset="UTF-8">
+	<title>Simple chat</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<link href="css/style.css" rel="stylesheet">
+	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.1.4/sockjs.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+</head>
+<body>
+<div class="chat_window">
+	<div class="top_menu">
+		<div class="buttons">
+			<div class="button close"></div>
+			<div class="button minimize"></div>
+			<div class="button maximize"></div>
 		</div>
-		<div id="message_template" class="message_template">
-			<li class="message">
-
-				<div class="text_wrapper">
-					<div class="author"></div>
-					<div class="text"></div>
+		<div class="title">Chat</div>
+	</div>
+	<ul class="messages"></ul>
+	<div class="bottom_wrapper clearfix">
+		<form id="chat">
+			<div class="input-group mb-3 d-none" id="input_form">
+				<input type="text" id="message_input_value" class="form-control" placeholder="Введите сообщение..." aria-label="" aria-describedby="button-addon2">
+				<div class="input-group-append">
+					<button class="btn btn-outline-secondary" type="submit" id="button-addon2">Отправить</button>
 				</div>
-			</li>
+			</div>
+		</form>
+		<form id="authorization">
+			<div class="input-group mb-3 " id="username_form" >
+				<input type="text" id="username" class="form-control" placeholder="Введите логин" aria-label="" aria-describedby="button-addon2">
+				<div class="input-group-append">
+					<button class="btn btn-outline-secondary" type="submit" id="button-addon">Подключиться</button>
+				</div>
+			</div>
+		</form>
+		<button onclick="disconnect()" id="disconnect" class="btn btn-primary d-none">Отключиться</button>
+	</div>
+</div>
+<div id="message_template" class="message_template">
+	<li class="message">
+		<div class="text_wrapper">
+			<div class="author"></div>
+			<div class="text"></div>
 		</div>
-	</body>
+	</li>
+</div>
+<script src="js/script.js"></script>
+</body>
 </html>
